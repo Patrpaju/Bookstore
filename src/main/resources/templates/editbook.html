@@ -8,7 +8,8 @@
 <body>
 	<h1>Edit Book</h1>
 	<div>
-	<form th:object="${book}" th:action="@{/edit/id}" action="#" method="post">
+	<form th:object="${book}" th:action="@{/save}" action="#" method="post">
+		<input type="hidden" id="id" th:field="*{id}" />
 		<label for="isbn">ISBN</label>
 		<input type="text" id="isbn" th:field="*{isbn}" />
 		<label for="title">Title</label>
