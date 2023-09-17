@@ -1,6 +1,6 @@
 package com.example.Bookstore.model;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,13 +15,18 @@ public class Book {
 	private String author;
 	private int publicationYear;
 	private double price;
-
-	public Book(String isbn, String title, String author, int publicationYear) {
+	
+	@ManyToOne
+	@JoinColumn(name ="categoryid")
+	private Category category;
+	
+	public Book(String isbn, String title, String author, int publicationYear, Category category) {
 		super();
 		this.isbn = isbn;
 		this.title = title;
 		this.author = author;
 		this.publicationYear = publicationYear;
+		this.category = category;
 	}
 
 	public Book() {
@@ -73,10 +78,24 @@ public class Book {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
 	@Override
 	public String toString() {
-		return "Book id =" + id + ",book isbn=" + isbn + "title=" + title + ", author =" + author + ", publicationYear="
-				+ publicationYear;
+		if (this.category != null)
+		return "Book [id =" + id + ",book isbn=" + isbn + "title=" + title + ", author =" + author + ", publicationYear="
+				+ publicationYear + " category =" + this.getCategory() + "]"; 
+		else
+			return "Book id =" + id + ",book isbn=" + isbn + "title=" + title + ", author =" + author + ", publicationYear="
+			+ publicationYear;
+
 	}
 
 }
