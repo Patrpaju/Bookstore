@@ -1,13 +1,24 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org"  
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-	<title>Booklist</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Booklist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
-<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
-
 <body>
+<div class="container">
+	<div class="col-md-4">
+	</div>
+	<div class="col-md-4">
+        <span  sec:authentication="name">Name</span>
+		
+	</div>
+	<div class="col-md-4" style="padding:20px 0">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+		</form>
+	</div>
 	<h1>Booklist</h1>
 	<table class="table table-striped">
 		<tr>
@@ -15,9 +26,9 @@
 			<th>Title</th>
 			<th>Isbn</th>
 			<th>Year</th>
+			<th>Price</th>
 			<th>Category</th>
-			<th>Delete</th>
-			<th>Edit</th>
+			<th sec:authorize="hasAuthority('ADMIN')"> </t>
 		</tr>
 		<tr th:each="book : ${books}">
 			</td>
@@ -25,12 +36,14 @@
 			<td th:text="${book.title}"></td>
 			<td th:text="${book.isbn}"></td>
 			<td th:text="${book.publicationYear}"></td>
+			<td th:text="${book.price}"></td>
 			<td th:text="${book.category.name}"></td> 	
-			<td><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>
-			<td><a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-primary">Edit</a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-primary">Edit</a></td>
 		</tr>
 	</table>
 	<a href="/save" class="btn btn-success">Add Book</a>
+</div>
 </body>
 
 </html>

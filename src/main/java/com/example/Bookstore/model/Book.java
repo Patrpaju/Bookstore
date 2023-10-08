@@ -1,5 +1,7 @@
 package com.example.Bookstore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,15 +19,17 @@ public class Book {
 	private double price;
 	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name ="categoryid")
 	private Category category;
 	
-	public Book(String isbn, String title, String author, int publicationYear, Category category) {
+	public Book(String isbn, String title, String author, int publicationYear, int price, Category category) {
 		super();
 		this.isbn = isbn;
 		this.title = title;
 		this.author = author;
 		this.publicationYear = publicationYear;
+		this.price = price;
 		this.category = category;
 	}
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"  
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Add book</title>
@@ -17,6 +18,8 @@
 		<input type="text" id="author" th:field="*{author}" />
 		<label for="publicationYear">Year</label>
 		<input type="text" id="publicationYear" th:field="*{publicationYear}" />
+		<label for="price">Price</label>
+		<input type="text" id="price" th:field="*{price}" />
 		
 			<div style="clear: both; display: block; height: 10px;"></div>						
 		  	<label for="catlist">Category</label>
