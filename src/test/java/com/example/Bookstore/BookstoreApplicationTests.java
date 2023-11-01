@@ -16,7 +16,6 @@ class BookstoreApplicationTests {
 	
 	@Test
 	void contextLoads() throws Exception {
-		assertThat(controller.isNotNull);
 	}
 
 }

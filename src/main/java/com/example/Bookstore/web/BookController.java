@@ -25,7 +25,6 @@ public class BookController {
 	@Autowired
 	private CategoryRepository crepository;
 
-	public IntPredicate isNotNull;
 
 	// Show all students
 	@RequestMapping(value = "/login")
