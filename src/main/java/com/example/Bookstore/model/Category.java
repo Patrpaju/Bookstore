@@ -19,8 +19,9 @@ public class Category {
 	private Long categoryid;
 	private String name;
 	
-	@JsonIgnore
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+	@JsonIgnore
 	private List<Book> books;
 	
 	public Category() {}

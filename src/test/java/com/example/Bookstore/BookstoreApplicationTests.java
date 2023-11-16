@@ -11,8 +11,6 @@ import com.example.Bookstore.web.BookController;
 @SpringBootTest
 class BookstoreApplicationTests {
 	
-	@Autowired
-	private BookController controller;
 	
 	@Test
 	void contextLoads() throws Exception {

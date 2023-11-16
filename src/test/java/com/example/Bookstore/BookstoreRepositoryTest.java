@@ -24,7 +24,7 @@ import org.junit.jupiter.api.Test;
 
 // @ExtendWith(SpringExtension.class)
 // @SpringBootTest(classes = BookstoreApplication.class)
-// @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class BookstoreRepositoryTest {
 
 	@Autowired

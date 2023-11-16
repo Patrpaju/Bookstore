@@ -20,7 +20,7 @@ public class Book {
 	
 	@ManyToOne
 	@JsonIgnore
-	@JoinColumn(name ="categoryid")
+	@JoinColumn(name ="category")
 	private Category category;
 	
 	public Book(String isbn, String title, String author, int publicationYear, int price, Category category) {
